@@ -1,0 +1,568 @@
+﻿@using Application.MainBoundedContext.DTO
+
+@model CompanyDTO
+
+<div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" role="widget">
+    <!-- widget options:
+    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+    data-widget-colorbutton="false"
+    data-widget-editbutton="false"
+    data-widget-togglebutton="false"
+    data-widget-deletebutton="false"
+    data-widget-fullscreenbutton="false"
+    data-widget-custombutton="false"
+    data-widget-collapsed="true"
+    data-widget-sortable="false"
+
+    -->
+    <header role="heading">
+        <div class="jarviswidget-ctrls" role="menu">
+            <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse">
+                <i class="fa fa-minus "></i>
+            </a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a>
+        </div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
+        <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+        <h2>Register A Company</h2>
+
+        <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+    </header>
+
+    <!-- widget div-->
+    <div role="content">
+
+        <!-- widget edit box -->
+        <div class="jarviswidget-editbox">
+            <!-- This area used as dropdown edit box -->
+
+        </div>
+        <!-- end widget edit box -->
+        <!-- widget content -->
+        @using (Html.BeginForm("Create", "Company", FormMethod.Post, new { id = "wizard-1", role = "form" }))
+        {
+            <div class="widget-body">
+
+                <div class="row" style="padding:16px">
+
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            <br>
+                            <h3><strong>Step 1 </strong> -Company Information</h3>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model=>model.Name, new { @class = "control-label" })
+
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control input-md alphanumberspace", placeholder = "Name" })
+                                            @Html.ValidationMessageFor(model => model.Name)
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PostalAddress, new { @class = "control-label" })
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.PostalAddress, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+                                            @Html.ValidationMessageFor(model => model.PostalAddress)
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PhysicalAddress, new { @class = "control-label" })
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+                                            @Html.TextBoxFor(model => model.PhysicalAddress, new { @class = "form-control input-md", placeholder = "Physical Adress" })
+                                            @Html.ValidationMessageFor(model => model.PhysicalAddress)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.MobilePhoneNumber, new { @class = "control-label" })
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-mobile-phone fa-fw"></i></span>
+                                            @Html.TextBoxFor(model => model.MobilePhoneNumber, new { @class = "form-control input-md", placeholder = "Mobile Phone" })
+                                            @Html.ValidationMessageFor(model => model.MobilePhoneNumber)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                               
+
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label" })
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                                                @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control input-md", placeholder = "Email Adrress" })
+                                                @Html.ValidationMessageFor(model => model.EmailAddress)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-sm-3">
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Logo, new { @class = "control-label" })
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-hashtag fa-fw "></i></span>
+
+                                                    @Html.TextBox("Logo", "", new { @class = "form-control input-md", type = "file", style = "padding:0px 0px;" }) <br />
+
+                                                </div>
+                                            </div>
+
+                                        </div>*@
+
+                                </div>
+
+
+
+
+                                <input value="Submit" class="btn btn-primary" autocomplete="off" type="submit">
+
+                            </div>
+                            @*<div class="tab-pane" id="tab2">
+                                    <br>
+                                    <h3><strong>Step 2</strong> -Confirm Details and Submit the details</h3>
+
+                                    <div class="panel-group" id="accordion">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
+                                                <h4 class="panel-title">
+                                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                        Company Information
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="Name">Name</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                                                    <input class="form-control input-md alphanumberspace" id="confirmName" placeholder="Name" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="Pin">KRA Pin</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                    <input class="form-control input-md" id="confirmPin" name="confirmPin" placeholder="Pin" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="PostalAddress">Postal Address</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                                                    <input class="form-control input-md" id="confirmPostalAddress" placeholder="Postal Address" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="PhysicalAddress">Physical Address</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                                                    <input class="form-control input-md" id="confirmPhysicalAddress" placeholder="Physical Address" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="MobilePhoneNumber">Mobile Phone Number (2547XXXXXXXX)</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-mobile-phone"></i></span>
+                                                                    <input class="form-control input-md numberonly" id="confirmMobilePhoneNumber" placeholder="Mobile Phone Number" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="EmailAddress">Email Address</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                                                                    <input class="form-control input-md" id="confirmEmailAddress" placeholder="Email Address" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="ApplicationDisplayName">Application Display Name</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                                                    <input class="form-control input-md alpha-only" id="confirmApplicationDisplayName" name="ApplicationDisplayName" placeholder="Application Display Name" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label for="SPSCustomerId">SPS Customer Id</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-hashtag fa-fw"></i></span>
+                                                                    <input class="form-control input-md" id="confirmSPSCustomerId" placeholder="SPS Customer Id" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="SPSUserName">SPS UserName</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                    <input class="form-control input-md" id="confirmSPSUserName" placeholder="SPS User Name" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="SPSPassword">SPS Password</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                    <input class="form-control input-md" id="confirmSPSPassword" placeholder="Tax PIN" disabled="" autocomplete="off" type="password">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="PaybillNumbers">Paybill Numbers(e.g. 888888)</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-suitcase"></i></span>
+                                                                    <input class="form-control input-md" id="confirmPaybillNumbers" placeholder="Paybill number(s) required" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="SMSRate">SMS Rate (KES)</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
+                                                                    <input class="form-control input-md" id="confirmSMSRate" placeholder="SMS Rate" value="" disabled="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="AlternateChannelTypeCardLimit">Daily Card Limit</label>
+
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                    <input class="form-control input-md numberonly" id="confirmCardLimit" name="CardLimit" placeholder="Card Limit" value="" disabled="disabled" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="AlternateChannelTypeInternetLimit">Daily Internet Limit</label>
+
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                    <input class="form-control input-md numberonly" disabled="disabled" id="confirmInternetLimit" name="InternetLimit" placeholder="Internet Limit" value="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="AlternateChannelTypeMobileLimit"> Daily Mobile Limit</label>
+
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                    <input class="form-control input-md" disabled="disabled" id="confirmMobileLimit" name="MobileLimit" placeholder="Mobile Limit" value="" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="IsApprovalRequired">Is Customer Approval Required?</label>
+                                                                <div class="input-group">
+                                                                    <input class="radio-inline form-control input-md" id="confirmIsApprovalRequired" value="true" disabled="" autocomplete="off" type="checkbox">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="Currency">Default Currency</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                    <input class="radio-inline form-control input-md" id="confirmCurrency" disabled="disabled" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="RemindersDaysCount">Reminders Days Count</label>
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                                    <input class="radio-inline form-control input-md" id="confirmRemindersDaysCount" disabled="disabled" autocomplete="off" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="TwoFactorEnabled">Two Factor Enabled</label>
+                                                                <div class="input-group">
+                                                                    <input class="radio-inline form-control input-md" id="confirmTwoFactorEnabled" value="true" disabled="" autocomplete="off" type="checkbox">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="IsActive">Is Active?</label>
+                                                                <div class="input-group">
+                                                                    <input class="radio-inline form-control input-md" id="confirmIsActive" value="true" disabled="" autocomplete="off" type="checkbox">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="IsEnabled">Is Enabled?</label>
+                                                                <div class="input-group">
+                                                                    <input class="radio-inline form-control input-md" id="confirmIsEnabled" value="true" disabled="" autocomplete="off" type="checkbox">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="control-label" for="EnableSelfRegistration">Enable Self Registration?</label>
+                                                                <div class="input-group">
+                                                                    <input class="radio-inline form-control input-md" id="confirmEnableSelfRegistration" value="true" disabled="" autocomplete="off" type="checkbox">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <input value="Submit" class="btn btn-primary" autocomplete="off" type="submit">
+                                </div>*@
+                            @*<div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="pager wizard no-margin">
+                                                <li class="previous first disabled">
+                                                <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+                                                </li>
+                                                <li class="previous disabled">
+                                                    <a href="javascript:void(0);" class="btn btn-lg btn-default"> Previous </a>
+                                                </li>
+
+                                                <li class="next">
+                                                    <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Next </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                }        <!-- end widget content -->
+
+            </div>
+    <!-- end widget div -->
+        </div>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                var $validator = $("#wizard-1").validate({
+                    rules: {
+                        Name: {
+                            required: true,
+                            maxlength: 50,
+                            minlength: 3
+                        },
+                        Pin: {
+                            required: true,
+                            maxlength: 15,
+                            minlength: 4
+                        },
+                        PostalAddress: {
+                            required: true,
+                            maxlength: 50,
+                            minlength: 3
+
+                        },
+                        PhysicalAddress: {
+                            required: true,
+                            maxlength: 50,
+                            minlength: 3
+                        },
+                        MobilePhoneNumber: {
+                            required: true,
+                            maxlength: 13,
+                            minlength: 9
+                        },
+                        EmailAddress: {
+                            required: true,
+                            email: true,
+                            maxlength: 100
+                        },
+                        ApplicationDisplayName: {
+                            required: true,
+                            maxlength: 50,
+                            minlength: 3
+                        },
+                        Website: {
+                            required: true,
+                            maxlength: 50,
+                            minlength: 3
+                        }
+
+
+                    },
+
+                    messages: {
+                        Name: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 50 characters",
+                            minlength: "This field requires minimum 3 characters"
+                        },
+                        Pin: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 15 characters",
+                            minlength: "This field requires minimum 4 characters"
+                        },
+                        PostalAddress: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 50 characters",
+                            minlength: "This field requires minimum 3 characters"
+                        },
+                        PhysicalAddress: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 40 characters",
+                            minlength: "This field requires minimum 4 characters"
+                        },
+                        MobilePhoneNumber: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 13 characters",
+                            minlength: "This field requires minimum 9 characters"
+                        },
+                        EmailAddress: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 100 characters",
+
+                        },
+                        ApplicationDisplayName: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 50 characters",
+                            minlength: "This field requires minimum 3 characters",
+
+                        },
+                        Website: {
+                            required: "This field is required",
+                            maxlength: "This field requires maximum 50 characters",
+                            minlength: "This field requires minimum 3 characters",
+                        }
+                    },
+
+                    highlight: function (element) {
+                        $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    },
+                    unhighlight: function (element) {
+                        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                    },
+                    errorElement: 'span',
+                    errorClass: 'help-block',
+                    errorPlacement: function (error, element) {
+                        if (element.parent('.input-group').length) {
+                            error.insertAfter(element.parent());
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                $('#bootstrap-wizard-1').bootstrapWizard({
+                    'tabClass': 'form-wizard',
+                    'onNext': function (tab, navigation, index) {
+                        var $valid = $("#wizard-1").valid();
+
+                        if (!$valid) {
+                            $validator.focusInvalid();
+                            return false;
+                        } else {
+                            //confirm();
+
+                            if (index == 1) {
+                                $(".pager li:last-child").hide();
+
+                            } else {
+                                $(".pager li:last-child").show();
+                            }
+                            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).addClass(
+                                'complete');
+                            $('#bootstrap-wizard-1').find('.form-wizard').children('li').eq(index - 1).find('.step')
+                                .html('<i class="fa fa-check"></i>');
+                        }
+                    },
+                    'onPrevious': function (tab, navigation, index) {
+                        $(".pager li:last-child").show();
+                    }
+                });
+
+
+                // fuelux wizard
+                var wizard = $('.wizard').wizard();
+
+                wizard.on('finished',
+                    function (e, data) {
+                        $("#fuelux-wizard").submit();
+                        console.log("submitted!");
+                        $.smallBox({
+                            title: "Congratulations! Your form was submitted",
+                            content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+                            color: "#5F895F",
+                            iconSmall: "fa fa-check bounce animated",
+                            timeout: 4000
+                        });
+
+                    });
+
+            });
+        </script>

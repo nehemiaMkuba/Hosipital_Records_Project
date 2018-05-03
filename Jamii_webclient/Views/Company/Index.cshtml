@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "Companies";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success fade in">
+        <button class="close" data-dismiss="alert">
+            ×
+        </button>
+        <i class="fa-fw fa fa-check"></i>
+        <strong>Success! </strong>@TempData["Success"]
+    </div>
+
+}
+<div id="content">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+
+
+        </div>
+    </div>
+    <style>
+        .pagination > li {
+            display: inline-block;
+        }
+
+        .ui-button {
+            padding: 0px 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        function LoadCompanyDetails(id) {
+            $.ajax({
+                url: '@Url.Action("GetCompanyDetailsById")',
+                data: {
+                    id: id
+                },
+                dataType: "html",
+                type: "GET",
+                success: function (data) {
+
+                    $("#detailsDiv").html(data);
+                    $("#CompanyModel").modal('show');
+                }
+
+            });
+        }
+
+        $(document).ready(function () {
+            var responsiveHelper_companiesGrid = undefined;
+
+            var breakpointDefinition = {
+                tablet: 1024,
+                phone: 480
+            };
+
+
+            $(".pagination> li").removeClass("fg-button ui-button ui-state-default previous disabled");
+
+            $('#companiesGrid').dataTable({
+                "sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+                "t" +
+                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>",
+                "autoWidth": true,
+                // Ajax settings
+                "aaSorting": [[0, 'desc']],
+
+                //"preDrawCallback": function () {
+                //    // Initialize the responsive datatables helper once.
+                //    if (!responsiveHelper_companiesGrid) {
+                //        responsiveHelper_companiesGrid = new ResponsiveDatatablesHelper($('#companiesGrid'), breakpointDefinition);
+                //    }
+                //},
+                "rowCallback": function (nRow) {
+                    responsiveHelper_companiesGrid.createExpandIcon(nRow);
+                },
+                "drawCallback": function (oSettings) {
+                    //responsiveHelper_companiesGrid.respond();
+                },
+                "sPaginationType": "full_numbers",
+                "bProcessing": true,
+                "bServerSide": true,
+                "sAjaxSource": "@(Url.Action("CompaniesList", "Company"))",
+                "sServerMethod": "POST",
+                // Callback settings
+                "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    /* row manipulation */
+
+                    var createdDate = new Date(parseInt(aData.CreatedDate.replace("/Date(", "").replace(")/", ""), 10));
+
+                    var h = ("0" + createdDate.getHours()).slice(-2);
+                    var m = ("0" + createdDate.getMinutes()).slice(-2);
+                    var s = ("0" + createdDate.getSeconds()).slice(-2);
+
+                    var dt_Created = $.datepicker.formatDate('dd/mm/yy', createdDate) + " " + h + ":" + m + ":" + s;
+
+                    $('td:eq(4)', nRow).html(dt_Created);
+
+                    var viewUrl = '<a onclick="LoadCompanyDetails(\'' + aData.Id + '\')" href="#">' + 'View</a>';
+
+
+
+                    var editUrl = '<a href="/company/Edit/' + aData.Id + '">' + 'Edit</a>';
+
+                    var deleteUrl = '<a href="/company/delete/' + aData.Id + '">' + 'Delete</a>';
+
+                    //$('td:eq(5)', nRow).html(viewUrl + '&nbsp;|&nbsp;' + editUrl + '&nbsp;|&nbsp;' + deleteUrl);
+
+                    $('td:eq(5)', nRow).html(viewUrl + '&nbsp;|&nbsp;' + editUrl);
+
+                    /* return*/
+                    return nRow;
+                },
+                // Display settings
+
+                "bJQueryUI": true,
+                "aoColumns": [
+
+                    { "mDataProp": "Name", "sTitle": "Name" },
+                    { "mDataProp": "PostalAddress", "sTitle": "PO Address" },
+                    { "mDataProp": "MobilePhoneNumber", "sTitle": "Mobile No." },
+                    { "mDataProp": "CreatedBy", "sTitle": "CreatedBy", "bSortable": false },
+                    { "mDataProp": "CreatedDate", "sTitle": "Created Date" },
+                    { "mDataProp": "Commands", "sTitle": "Actions", "bSortable": false }]
+
+            });
+            $("th").attr("data-hide", "phone,tablet");
+            $("th:nth-child(1)").removeAttr("data-hide").attr("data-class", "expand");
+
+             $("th").addClass("hidden-md");
+             $("th").addClass("hidden-sm");
+             $("th").addClass("hidden-xs");
+        });
+
+    </script>
+
+    <section id="widget-grid" class="">
+        <!-- row -->
+
+        <div class="row">
+
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
+
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Companies</h2>
+
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                            <table cellpadding="0" cellspacing="1" id="companiesGrid" class="table table-striped table-bordered table-hover" style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="datatable_empty">
+                                            Loading data from server
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                    <!-- end widget div -->
+
+                </div>
+
+                <!-- <a class="btn btn-primary btn-default" href="javascript:void(0);">Create Branch</a>-->
+            </article>
+            <!-- WIDGET END -->
+
+        </div>
+
+        <!-- end row -->
+        <!-- end row -->
+        <div>
+
+            @Html.ActionLink("Create Company", "Create", null, new { @class = "btn btn-primary btn-default" })
+
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="CompanyModel" role="dialog">
+            <div class="modal-dialog" style="width:80%">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <strong>
+                                Company Details
+                            </strong>
+
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+
+                    </div>
+                    <div class="modal-body">
+                        <span id="test"></span>
+                        <div id="detailsDiv">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Datatable {
+    @Scripts.Render("~/bundles/datatables")
+}
+
+

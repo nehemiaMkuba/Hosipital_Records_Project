@@ -1,0 +1,64 @@
+﻿@using Application.MainBoundedContext.DTO
+
+@model PatientDTO
+@{
+    
+}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PersonFullName, new { @class = "control-label" })
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.PersonFullName, new { @class = "form-control input-md alphanumberspace", placeholder = "Name" })
+                @Html.ValidationMessageFor(model => model.PersonFullName)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NextOfKinName, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-hashtag fa-fw "></i></span>
+
+                @Html.TextBoxFor(model => model.NextOfKinName, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+
+                @Html.ValidationMessageFor(model => model.NextOfKinName)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+                @Html.ValidationMessageFor(model => model.CreatedBy)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedDate, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control input-md", placeholder = "Physical Adress" })
+                @Html.ValidationMessageFor(model => model.CreatedDate)
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

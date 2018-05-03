@@ -1,0 +1,121 @@
+﻿@using Application.MainBoundedContext.DTO
+
+@model EmployeeDTO
+@{
+    var genderSelectList = ViewBag.GenderSelectList as List<SelectListItem>;
+    var departmentsSelectList = ViewBag.DepartmentsSelectList as List<SelectListItem>;
+}
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, new { @class = "control-label" })
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control input-md alphanumberspace", placeholder = "Name" })
+                @Html.ValidationMessageFor(model => model.FirstName)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-hashtag fa-fw "></i></span>
+
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostalAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.PostalAddress, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+                @Html.ValidationMessageFor(model => model.PostalAddress)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhysicalAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.PhysicalAddress, new { @class = "form-control input-md", placeholder = "Physical Adress" })
+                @Html.ValidationMessageFor(model => model.PhysicalAddress)
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MobilePhoneNumber, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-mobile-phone fa-fw"></i></span>
+                @Html.TextBoxFor(model => model.MobilePhoneNumber, new { @class = "form-control input-md", placeholder = "Mobile Phone" })
+                @Html.ValidationMessageFor(model => model.MobilePhoneNumber)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control input-md", placeholder = "Email Adrress" })
+                @Html.ValidationMessageFor(model => model.EmailAddress)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-hashtag fa-fw "></i></span>
+
+                @Html.DropDownListFor(model => model.Gender, genderSelectList, new { @class = "form-control input-md" })
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-bars fa-fw"></i></span>
+                @Html.DropDownListFor(m => m.DepartmentId, departmentsSelectList, new { @class = "form-control input-md" })
+                @Html.ValidationMessageFor(model => model.DepartmentId)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3 individual">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control input-md date", placeholder = "Date Of Birth" })
+
+            </div>
+        </div>
+    </div>
+</div>

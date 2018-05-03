@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Patient Management System</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/libscss")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    @Html.Partial("_Aside")
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            @Scripts.Render("~/bundles/javascripts")
+            @RenderSection("Datatable", false)
+            @*@Scripts.Render("~/bundles/javascripts")
+                @Scripts.Render("~/bundles/formvalidators")
+                @Scripts.Render("~/bundles/datatables")
+                @Scripts.Render("~/bundles/jqueryval")*@
+            @*<ol class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">My Dashboard</li>
+                </ol>*@
+            <!-- Icon Cards-->
+            @RenderBody()
+
+            @*@{ Html.RenderPartial("_Scripts"); }*@
+            @*@RenderSection("pagespecific",false)*@
+
+
+
+            <script type="text/javascript">
+
+                $("[type='search'],[name='customersGrid_length']").addClass("form-control");
+
+                $("input:not(:checkbox),select").addClass("form-control");
+                $(":text,select").addClass("input-md");
+                $(":submit").removeClass("form-control");
+                $(".ui-datepicker-year").removeClass("input-md");
+                $("[id*='Grid_length']").css({ "float": "right" });
+            </script>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Health management  System@DateTime.Now.Year</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="/account/login">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript-->
+
+    </div>
+
+</body>
+
+</html>

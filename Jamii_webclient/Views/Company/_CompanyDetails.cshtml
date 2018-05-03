@@ -1,0 +1,81 @@
+﻿@using Application.MainBoundedContext.DTO
+
+@model CompanyDTO
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-building fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control input-md alphanumberspace", placeholder = "Name" })
+                @Html.ValidationMessageFor(model => model.Name)
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostalAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.PostalAddress, new { @class = "form-control input-md", placeholder = "Postal Adress" })
+                @Html.ValidationMessageFor(model => model.PostalAddress)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhysicalAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-map-marker fa-fw" aria-hidden="true"></i></span>
+                @Html.TextBoxFor(model => model.PhysicalAddress, new { @class = "form-control input-md", placeholder = "Physical Adress" })
+                @Html.ValidationMessageFor(model => model.PhysicalAddress)
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MobilePhoneNumber, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-mobile-phone fa-fw"></i></span>
+                @Html.TextBoxFor(model => model.MobilePhoneNumber, new { @class = "form-control input-md", placeholder = "Mobile Phone" })
+                @Html.ValidationMessageFor(model => model.MobilePhoneNumber)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="col-sm-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailAddress, new { @class = "control-label" })
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+                @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control input-md", placeholder = "Email Adrress" })
+                @Html.ValidationMessageFor(model => model.EmailAddress)
+            </div>
+        </div>
+    </div>
+
+    @*<div class="col-sm-3">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Logo, new { @class = "control-label" })
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-hashtag fa-fw "></i></span>
+
+                    @Html.TextBox("Logo", "", new { @class = "form-control input-md", type = "file", style = "padding:0px 0px;" }) <br />
+
+                </div>
+            </div>
+
+        </div>*@
+
+</div>
